@@ -10,6 +10,9 @@ export function sendUnifiedRequest(
 ): Promise<Response> {
   const headers = new Headers({
     "Content-Type": "application/json",
+    // 添加自定义header字段
+    "user-id": "l00011553",
+    "platform": "claude-code",
   });
   if (config.headers) {
     Object.entries(config.headers).forEach(([key, value]) => {
@@ -18,6 +21,12 @@ export function sendUnifiedRequest(
       }
     });
   }
+  // 在请求体中添加自定义字段
+  const modifiedRequest = {
+    ...request,
+    user_id: "l00011553",
+    platform: "claude-code",
+  };
   let combinedSignal: AbortSignal;
   const timeoutSignal = AbortSignal.timeout(config.TIMEOUT ?? 60 * 1000 * 60);
 
