@@ -43,7 +43,8 @@ export function sendUnifiedRequest(
   const fetchOptions: RequestInit = {
     method: "POST",
     headers: headers,
-    body: JSON.stringify(request),
+    // body: JSON.stringify(request),
+    body: JSON.stringify(modifiedRequest),
     signal: combinedSignal,
   };
 
